@@ -1,0 +1,60 @@
+{% block content %}
+    <a href="{% url 'shop:item_list' %}">게시판 목록으로 돌아가기</a><br/><br/>
+
+    <form>
+    <fieldset>
+    <table>
+        <thead>
+            <th>필드</th><th>내용</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="10%">id:</td><td><input type="text" value={{ item.id }}></td>
+        </tr>
+        <tr>
+            <td>제목:</td><td><input type="text" value="{{ item.name }}" style="width:300px;"></td>
+        </tr>
+        <tr>
+            <td>내용:</td>
+            <td><textarea style="width: 400px; height: 200px; overflow: visible;">{{ item.desc }}</textarea></td>
+        </tr>
+        <tr>
+            <td>사진:</td><td><input type="image" value="{{ item.photo }}"></td>
+        </tr>
+        <tr>
+            <td>게시 일시:</td><td><input type="text" value="{{ post.created_at }}"></td>
+        </tr>
+        <tr>
+            <td>수정 일시:</td><td><input type="text" value="{{ post.updated_at }}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </fieldset>
+    </form> <br/>
+
+   <form>
+    <fieldset>
+        id:         <input type="text" value={{ item.id }}> <br/>
+        제목:       <input type="text" value="{{ item.name }}"> <br/>
+        내용:       <input type="text" value="{{ item.desc|linebreaksbr }}"> <br/>
+        내용:       {{ item.desc|linebreaksbr }} <br/>
+        내용:       <textarea style="width: 200px; height: 200px;">{{ item.desc }}</textarea> <br/>
+        내용:       <textarea style="width: 200px; height: 200px;">{{ item.desc|linebreaksbr }}</textarea> <br/>
+        사진:       <input type="image" value="{{ item.photo }}"> <br/>
+        수정 일시:  <input type="text" value="{{ item.updated_at }}"> <br/>
+        게시 일시:  <input type="text" value="{{ item.created_at }}"> <br/>
+    </fieldset>
+    </form> <br/>
+
+    item: {{ item.id }}#{{ item.name }}#{{ item.updated_at }}#
+            {{ item.created_at }}<br/><br/>
+
+    id: {{ item.id }}<br/>
+    제목: {{ item.name }}<br/>
+    내용: {{ item.desc|linebreaksbr }}<br/>
+    수정 일시: {{ item.updated }}<br/>
+    게시 일시: {{ item.created_at }}<br/>
+
+    item: {{ item }}<br/><br/>
+
+{% endblock content %}

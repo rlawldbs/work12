@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <style>
+        table {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        table td, table th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        table tr:nth-child(even){background-color: #f2f2f2;}
+
+        table tr:hover {background-color: #ddd;}
+
+        table th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #4CAF50;
+          color: white;
+        }
+    </style>
+</head>
+<body>
+    {{ request }} <br/>
+    request.method: {{ request.method }}<br/>
+    request.GET: {{ request.GET }}<br/>
+    request.META: {{ request.META }}
+    <hr/>
+    {{ item_list }}
+    <hr>
+    {% for item in item_list %}
+        {{ item }} <br>
+    {% endfor %}
+    <hr>
+    {% for item in item_list %}
+        {{ item.name }} #
+        {{ item.desc }} #
+        {{ item.created_at }} #
+        {{ item.updated_at }} <br>
+    {% endfor %}
+    <form action="" method="GET">
+        <input type="text" name="q" value="{{ q }}"/>
+        <input type="submit" value="검색"/>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <th>번호</th>
+            <th>이름</th>
+            <th>설명</th>
+            <th>등록 일시</th>
+            <th>수정 일시</th>
+        </thead>
+        <tbody>
+            {% for item in item_list %}
+            <tr>
+                <td> {{ item.id }} </td>
+                <td> {{ item.name }} </td>
+                <td> {{ item.desc }} </td>
+                <td> {{ item.creatd_at }} </td>
+                <td> {{ item.updated_at }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
